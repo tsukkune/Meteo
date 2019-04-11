@@ -3,7 +3,6 @@ package com.meteo;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.reactcommunity.rnlocalize.RNLocalizePackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage;
 import com.horcrux.svg.SvgPackage;
@@ -29,7 +28,6 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new RNLocalizePackage(),
             new RNFirebasePackage(),
              new RNFirebaseAuthPackage(),
             new SvgPackage(),
