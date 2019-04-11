@@ -4,11 +4,47 @@ import { StyleSheet, Platform, Image, Text, View, Button } from 'react-native'
 import firebase from 'react-native-firebase'
 
 export default class Main extends React.Component {
-  state = { currentUser: null }
+  state = {
+    currentUser: null,
+    latitude: null,
+    longitude: null,
+    error: null
+    
+    }
 
   componentDidMount(){
     const {currentUser} = firebase.auth()
     this.setState({currentUser})
+
+    //realtime position
+    // this.watchId = navigator.geolocation.watchPosition(
+    //   (position) => {
+    //     this.setState({
+    //       latitude: position.coords.latitude,
+    //       longitude: position.coords.longitude,
+    //       error: null,
+    //     });
+    //   },
+    //   (error) => this.setState({ error: error.message }),
+    //   { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
+    // );
+    
+    navigator.geolocation.getCurrentPosition(
+      (position)=>{
+        this.setState({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+          error: null
+        })
+      },
+      (error)=>this.setState({error:error.errorMessage}),
+      {enableHighAccuracy:true, timeout:20000, maximumAge:1000}
+    )
+  }
+
+  componentWillUnmount(){
+    // realtime position
+    // navigator.geolocation.clearWatch(this.watchId)
   }
 
   handleLogOut(){
@@ -34,6 +70,9 @@ export default class Main extends React.Component {
           Hi {currentUser && currentUser.email}!
         </Text>
         <Button title="Logout" onPress={this.handleLogOut.bind(this)} />
+
+        <Text>Latitude: {this.state.latitude}</Text>
+        <Text>Longitude: {this.state.longitude}</Text>
       </View>
     )
   }
