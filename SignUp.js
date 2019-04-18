@@ -1,6 +1,13 @@
 // SignUp.js
 import React from "react";
-import { StyleSheet, Text, TextInput, View, Button } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  Button,
+  ImageBackground
+} from "react-native";
 import firebase from "react-native-firebase";
 
 export default class SignUp extends React.Component {
@@ -19,59 +26,66 @@ export default class SignUp extends React.Component {
   };
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.appTitle}>MÉTÉO</Text>
-        <View style={styles.buttonView}>
-          <Button
-            style={styles.button}
-            title="Connexion"
-            onPress={() => this.props.navigation.navigate("Login")}
+      <ImageBackground
+        source={require("./img/img-maquette-02.png")}
+        style={{ width: "100%", height: "100%" }}
+      >
+        <View style={styles.container}>
+          <Text style={styles.appTitle}>MÉTÉO</Text>
+          <View style={styles.buttonView}>
+            <Button
+              style={styles.button}
+              title="Connexion"
+              onPress={() => this.props.navigation.navigate("Login")}
+            />
+            <Button style={styles.button} disabled title="Inscription" />
+          </View>
+
+          {this.state.errorMessage && (
+            <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
+          )}
+
+          <TextInput
+            placeholder="Email"
+            autoCapitalize="none"
+            underlineColorAndroid="#BAE8E5"
+            placeholderTextColor="#BAE8E5"
+            style={styles.textInput}
+            onChangeText={email => this.setState({ email })}
+            value={this.state.email}
           />
-          <Button style={styles.button} disabled title="Inscription" />
+          <TextInput
+            secureTextEntry
+            placeholder="Password"
+            autoCapitalize="none"
+            underlineColorAndroid="#BAE8E5"
+            placeholderTextColor="#BAE8E5"
+            style={styles.textInput}
+            onChangeText={password => this.setState({ password })}
+            value={this.state.password}
+          />
+          <Button title="S'inscrire" onPress={this.handleSignUp.bind(this)} />
         </View>
-
-        {this.state.errorMessage && (
-          <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
-        )}
-
-        <TextInput
-          placeholder="Email"
-          autoCapitalize="none"
-          underlineColorAndroid="#BAE8E5"
-          placeholderTextColor="#BAE8E5"
-          style={styles.textInput}
-          onChangeText={email => this.setState({ email })}
-          value={this.state.email}
-        />
-        <TextInput
-          secureTextEntry
-          placeholder="Password"
-          autoCapitalize="none"
-          underlineColorAndroid="#BAE8E5"
-          placeholderTextColor="#BAE8E5"
-          style={styles.textInput}
-          onChangeText={password => this.setState({ password })}
-          value={this.state.password}
-        />
-        <Button title="S'inscrire" onPress={this.handleSignUp.bind(this)} />
-      </View>
+      </ImageBackground>
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: "30%",
+    marginTop: "50%",
     justifyContent: "space-around",
     alignItems: "center"
   },
   textInput: {
     height: 40,
     width: "90%",
+    color: "#BAE8E5",
     marginTop: 8
   },
   appTitle: {
-    fontSize: 32
+    fontSize: 32,
+    color: "#fff"
   },
   button: {},
   buttonView: {

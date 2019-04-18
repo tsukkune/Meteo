@@ -5,7 +5,8 @@ import {
   Text,
   View,
   Button,
-  ActivityIndicator
+  ActivityIndicator,
+  ImageBackground
 } from "react-native";
 import firebase from "react-native-firebase";
 import DetailsCard from "./Components/DetailsCard";
@@ -123,38 +124,51 @@ export default class Main extends React.Component {
     const { currentUser } = this.state;
     if (!this.state.city) {
       return (
-        <ActivityIndicator
-          animating={true}
-          style={styles.indicator}
-          size="large"
-        />
+        <ImageBackground
+          source={require("./img/img-maquette-07.png")}
+          style={{ width: "100%", height: "100%" }}
+        >
+          <ActivityIndicator
+            animating={true}
+            style={styles.indicator}
+            size="large"
+          />
+        </ImageBackground>
       );
     }
     return (
-      <View style={styles.container}>
-        {this.state.errorMessage && (
-          <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
-        )}
+      <ImageBackground
+        source={require("./img/img-maquette-07.png")}
+        style={{ width: "100%", height: "100%" }}
+      >
+        <View style={styles.container}>
+          {this.state.errorMessage && (
+            <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
+          )}
 
-        <Text>Connécter en tant que: {currentUser.email}</Text>
-        <Button title="Se deconnecter" onPress={this.handleLogOut.bind(this)} />
-        <Text> ville: {this.state.city}</Text>
-        <Text>Latitude: {this.state.latitude}</Text>
-        <Text>Longitude: {this.state.longitude}</Text>
-        <Text>date: {this.state.date}</Text>
-        <Text>condition: {this.state.condition}</Text>
+          <Text>Connécter en tant que: {currentUser.email}</Text>
+          <Button
+            title="Se deconnecter"
+            onPress={this.handleLogOut.bind(this)}
+          />
+          <Text> ville: {this.state.city}</Text>
+          <Text>Latitude: {this.state.latitude}</Text>
+          <Text>Longitude: {this.state.longitude}</Text>
+          <Text>date: {this.state.date}</Text>
+          <Text>condition: {this.state.condition}</Text>
 
-        <DetailsCard
-          uv={this.state.uv}
-          visibility={this.state.visibility}
-          wind={this.state.wind}
-          humidity={this.state.humidity}
-          feeltemp={this.state.feeltemp}
-          temp={this.state.temp}
-        />
+          <DetailsCard
+            uv={this.state.uv}
+            visibility={this.state.visibility}
+            wind={this.state.wind}
+            humidity={this.state.humidity}
+            feeltemp={this.state.feeltemp}
+            temp={this.state.temp}
+          />
 
-        <Button title="Actualiser" onPress={this.handleReload.bind(this)} />
-      </View>
+          <Button title="Actualiser" onPress={this.handleReload.bind(this)} />
+        </View>
+      </ImageBackground>
     );
   }
 }
