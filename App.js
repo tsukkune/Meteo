@@ -7,37 +7,40 @@
  * @lint-ignore-every XPLATJSCOPYRIGHT1
  */
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Image, Text, View} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { createSwitchNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
+import React, { Component } from "react";
+import { Platform, StyleSheet, Image, Text, View } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+import {
+  createSwitchNavigator,
+  createStackNavigator,
+  createAppContainer
+} from "react-navigation";
 
 // import the different screens
-import Loading from './Loading'
-import SignUp from './SignUp'
-import Login from './Login'
-import Main from './Main'
+import Loading from "./Loading";
+import SignUp from "./SignUp";
+import Login from "./Login";
+import Main from "./Main";
 
-const AppStack = createStackNavigator({ Main: Main});
-const AuthStack = createStackNavigator({ SignUp: SignUp, Login: Login});
+const AppStack = createStackNavigator({ Main: Main });
+const AuthStack = createStackNavigator(
+  { SignUp: SignUp, Login: Login },
+  { initialRouteName: "Login" }
+);
 
 // create our app's navigation stack
-export default createAppContainer(createSwitchNavigator(
-  {
-    AuthLoading: Loading,
-    App: AppStack,
-    Auth: AuthStack,
-  },
-  {
-    initialRouteName: 'AuthLoading',
-  }
-));
-
-
-
-
-
-
+export default createAppContainer(
+  createSwitchNavigator(
+    {
+      AuthLoading: Loading,
+      App: AppStack,
+      Auth: AuthStack
+    },
+    {
+      initialRouteName: "AuthLoading"
+    }
+  )
+);
 
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
