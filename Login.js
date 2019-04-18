@@ -16,7 +16,7 @@ export default class Login extends React.Component {
     const { email, password } = this.state;
     firebase
       .auth()
-      .signInWithEmailAndPassword(email, password)
+      .signInWithEmailAndPassword(email.trim(), password)
       .then(() => this.props.navigation.navigate("Main"))
       .catch(error => this.setState({ errorMessage: error.message }));
     console.log("handleLogin");
@@ -24,7 +24,7 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.appTitle}>METEO</Text>
+        <Text style={styles.appTitle}>MÉTÉO</Text>
         <View style={styles.buttonView}>
           <Button style={styles.button} disabled title="Conexion" />
           <Button
@@ -38,7 +38,8 @@ export default class Login extends React.Component {
         )}
         <TextInput
           style={styles.textInput}
-          underlineColorAndroid="grey"
+          underlineColorAndroid="#BAE8E5"
+          placeholderTextColor="#BAE8E5"
           autoCapitalize="none"
           placeholder="Email"
           onChangeText={email => this.setState({ email })}
@@ -47,7 +48,8 @@ export default class Login extends React.Component {
         <TextInput
           secureTextEntry
           style={styles.textInput}
-          underlineColorAndroid="grey"
+          underlineColorAndroid="#BAE8E5"
+          placeholderTextColor="#BAE8E5"
           autoCapitalize="none"
           placeholder="Password"
           onChangeText={password => this.setState({ password })}
