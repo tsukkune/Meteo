@@ -1,5 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
+import Goutte from "../icons/close";
+import Humidite from "../icons/humidite";
 
 const DetailsCard = props => (
   <View style={{ backgroundColor: "#BAE8E5" }}>
@@ -14,6 +16,8 @@ const DetailsCard = props => (
         <Text>uv: {props.uv}</Text>
       </View>
     </View>
+    <Humidite height={50} width={50} />
+    <Humidite height={150} width={150} />
   </View>
 );
 
