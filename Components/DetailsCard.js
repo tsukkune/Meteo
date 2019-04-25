@@ -2,7 +2,7 @@ import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import Humidite from "../icons/humidite";
 import Ressenti from "../icons/ressenti";
-import Vent from "../icons/vent";
+import Vent from "../icons/vitesse-vent";
 import Visibilite from "../icons/visibilite";
 import Uv from "../icons/uv";
 import Up from "../icons/up";
