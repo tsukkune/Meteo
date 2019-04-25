@@ -55,10 +55,10 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline"
   },
   text: {
-    color: "white"
+    color: "BAE8E5"
   },
   temperature: {
-    color: "white",
+    color: "BAE8E5",
     fontSize: 42
   },
   global: {
