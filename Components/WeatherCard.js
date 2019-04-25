@@ -18,8 +18,6 @@ import Vent_orage from "../icons/vent-orage";
 import Vent_soleil from "../icons/vent-soleil";
 import Vent from "../icons/vent";
 
-
-
 const WeatherCard = props => (
   <View style={{ backgroundColor: "#fff", flex: 1 }}>
     <View style={styles.global}>
@@ -151,8 +149,7 @@ function selectIcon(code) {
 
 
     default:
-      return <Close height={100} width={100} 
-      fill="#5E9E9C"/>;
+      return <Close height={100} width={100} fill="#5E9E9C" />;
   }
 }
 

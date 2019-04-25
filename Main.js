@@ -13,6 +13,13 @@ import DetailsCard from "./Components/DetailsCard";
 import WeatherCard from "./Components/WeatherCard";
 
 export default class Main extends React.Component {
+  static navigationOptions = {
+    headerTitle: <Text> Meteo</Text>,
+    headerRight: (
+      <Button onPress={() => alert("This is a button!")} title="Info" />
+    )
+  };
+
   state = {
     currentUser: null,
     latitude: null,
@@ -37,19 +44,6 @@ export default class Main extends React.Component {
 
     this.setState({ currentUser });
 
-    //realtime position
-    // this.watchId = navigator.geolocation.watchPosition(
-    //   (position) => {
-    //     this.setState({
-    //       latitude: position.coords.latitude,
-    //       longitude: position.coords.longitude,
-    //       error: null,
-    //     });
-    //   },
-    //   (error) => this.setState({ error: error.message }),
-    //   { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000, distanceFilter: 10 },
-    // );
-
     navigator.geolocation.getCurrentPosition(
       position => {
         this.handleCurrentWeather(position);
@@ -57,11 +51,6 @@ export default class Main extends React.Component {
       error => this.setState({ error: error.errorMessage }),
       { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
     );
-  }
-
-  componentWillUnmount() {
-    // realtime position
-    // navigator.geolocation.clearWatch(this.watchId)
   }
 
   handleCurrentWeather(position) {
