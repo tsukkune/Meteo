@@ -42,59 +42,41 @@ function selectIcon(code) {
   switch (code) {
     case 1000:
       return <Soleil height={100} width={100} />;
-      break;
       case 1003:
       return <Nuage_soleil height={100} width={100} />;
-      break;
       case 1006:
       return <Nuage height={100} width={100} />;
-      break;
       case 1009:
       return <Nuage_soleil height={100} width={100} />;
-      break;
       case 1030:
       return <Brouillard height={100} width={100} />;
-      break;
       case 1063:
       return <Pluie height={100} width={100} />;
-      break;
       case 1066:
       return <Neige height={100} width={100} />;
-      break;
       case 1069:
       return <Neige height={100} width={100} />;
-      break;
       case 1114:
       return <Neige height={100} width={100} />;
-      break;
       case 1117:
       return <Brouillard height={100} width={100} />;
-      break;
       case 1135:
       return <Brouillard height={100} width={100} />;
-      break;
       case 1147:
       return <Brouillard height={100} width={100} />;
-      break;
       case 1150:
       return <Nuage_soleil height={100} width={100} />;
-      break;
       case 1153:
       return <Nuage_soleil height={100} width={100} />;
-      break;
       case 1168:
       return <Brouillard height={100} width={100} />;
-      break;
       case 1171:
       return <Brouillard height={100} width={100} />;
-      break;
       case 1147:
-      return <Pluie_soleil height={100} width={100} />;
-      break;
+      return <Pluie_soleil height={100} width={100} />;      break;
 
     case 1189:
       return <Pluie_soleil height={100} width={100} />;
-      break;
     case 1006:
       return <Nuage height={100} width={100} />;
     default:
