@@ -21,7 +21,7 @@ import Vent from "../icons/vent";
 
 
 const WeatherCard = props => (
-  <View style={{ backgroundColor: "#fff" }}>
+  <View style={{ backgroundColor: "#fff", flex: 1 }}>
     <View style={styles.global}>
       <Text>{props.date}</Text>
       <Text>{props.city}</Text>
@@ -95,6 +95,8 @@ function selectIcon(code) {
     case 1189:
       return <Pluie_soleil height={100} width={100} />;
       break;
+    case 1006:
+      return <Nuage height={100} width={100} />;
     default:
       return <Close height={100} width={100} 
       fill="#5E9E9C"/>;
