@@ -13,9 +13,9 @@ const DetailsCard = props => (
     <View style={{ justifyContent: "center", alignItems: "center" }}>
       <View style={{ flexDirection: "row" }}>
         <Down height={18} width={18} />
-        <Text style={styles.text}> {props.min}°</Text>
+        <Text style={styles.minMax}> {props.min}°</Text>
         <Up height={18} width={18} />
-        <Text style={styles.text}> {props.max}°</Text>
+        <Text style={styles.minMax}> {props.max}°</Text>
       </View>
       <Text style={styles.temperature}>{props.temp}°</Text>
     </View>
@@ -23,23 +23,23 @@ const DetailsCard = props => (
       <Text style={styles.title}>DÉTAILS</Text>
       <View style={styles.detailsRow}>
         <Ressenti height={18} width={18} />
-        <Text style={styles.text}> ressenti: {props.feeltemp}°</Text>
+        <Text style={styles.text}> Ressenti : {props.feeltemp}°</Text>
       </View>
       <View style={styles.detailsRow}>
         <Humidite height={18} width={18} />
-        <Text style={styles.text}> humidite: {props.humidity} %</Text>
+        <Text style={styles.text}> Humidite : {props.humidity} %</Text>
       </View>
       <View style={styles.detailsRow}>
         <Vent height={18} width={18} />
-        <Text style={styles.text}> vent: {props.wind} Km/h</Text>
+        <Text style={styles.text}> Vent : {props.wind} Km/h</Text>
       </View>
       <View style={styles.detailsRow}>
         <Visibilite height={18} width={18} />
-        <Text style={styles.text}> visibilite: {props.visibility} Km</Text>
+        <Text style={styles.text}> Visibilite : {props.visibility} Km</Text>
       </View>
       <View style={styles.detailsRow}>
         <Uv height={18} width={18} />
-        <Text style={styles.text}> uv: {props.uv}</Text>
+        <Text style={styles.text}> Indice UV : {props.uv}</Text>
       </View>
     </View>
   </View>
@@ -60,8 +60,11 @@ const styles = StyleSheet.create({
     color: "#BAE8E5",
     fontSize: 42
   },
+  minMax: {
+    color: "#5E9E9C"
+  },
   global: {
-    flex: 2,
+    flex: 3,
     flexDirection: "row",
     width: "90%",
     justifyContent: "space-evenly"

@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, ImageBackground } from "react-native";
+import { Text, View, StyleSheet, ImageBackground, Image } from "react-native";
 import Close from "../icons/close";
 import Brouillard from "../icons/brouillard";
 import Grele from "../icons/grele";
@@ -19,19 +19,34 @@ import Vent_soleil from "../icons/vent-soleil";
 import Vent from "../icons/vent";
 
 const WeatherCard = props => (
-  <View style={{ backgroundColor: "#fff", flex: 1 }}>
+  <View
+    style={{
+      justifyContent: "space-around",
+      flex: 2
+    }}
+  >
     <View style={styles.global}>
       <Text>{props.date}</Text>
       <Text>{props.city}</Text>
       {selectIcon(props.code)}
       <Text>{props.condition}</Text>
     </View>
+    <Image
+      style={{
+        flex: 1,
+        height: undefined,
+        width: undefined,
+        backgroundColor: "transparent"
+      }}
+      source={require("../img/vague-09.png")}
+    />
   </View>
 );
 
 const styles = StyleSheet.create({
   global: {
-    width: "90%",
+    backgroundColor: "#fff",
+    justifyContent: "space-around",
     alignItems: "center"
   }
 });
@@ -55,7 +70,7 @@ function selectIcon(code) {
     case 1069:
       return <Neige_soleil height={100} width={100} />;
     case 1072:
-      return <Pluie height={100} width={100} />;  
+      return <Pluie height={100} width={100} />;
     case 1087:
       return <Orage height={100} width={100} />;
     case 1114:
@@ -146,7 +161,6 @@ function selectIcon(code) {
       return <Orage height={100} width={100} />;
     case 1282:
       return <Orage height={100} width={100} />;
-
 
     default:
       return <Close height={100} width={100} fill="#5E9E9C" />;

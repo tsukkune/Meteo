@@ -1,11 +1,11 @@
 // Login.js
 import React from "react";
+import { Button } from "react-native-elements";
 import {
   StyleSheet,
   Text,
   TextInput,
   View,
-  Button,
   ImageBackground
 } from "react-native";
 import firebase from "react-native-firebase";
@@ -30,10 +30,16 @@ export default class Login extends React.Component {
         <View style={styles.container}>
           <Text style={styles.appTitle}>MÉTÉO</Text>
           <View style={styles.buttonView}>
-            <Button style={styles.button} disabled title="Conexion" />
+            <Button
+              style={styles.button}
+              disabled
+              title="Connexion"
+              type="clear"
+            />
             <Button
               style={styles.button}
               title="Inscription"
+              type="clear"
               onPress={() => this.props.navigation.navigate("SignUp")}
             />
           </View>

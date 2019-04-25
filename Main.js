@@ -4,20 +4,38 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
+  // Button,
   ActivityIndicator,
   ImageBackground
 } from "react-native";
 import firebase from "react-native-firebase";
 import DetailsCard from "./Components/DetailsCard";
 import WeatherCard from "./Components/WeatherCard";
+import { Button } from "react-native-elements";
 
 export default class Main extends React.Component {
-  static navigationOptions = {
-    headerTitle: <Text> Meteo</Text>,
-    headerRight: (
-      <Button onPress={() => alert("This is a button!")} title="Info" />
-    )
+  // static navigationOptions = {
+  //   headerTitle: <Text> Météo</Text>,
+  //   headerRight: (
+  //     <Button
+  //       type="clear"
+  //       onPress={() => alert("This is a button!")}
+  //       title="Deconnexion"
+  //     />
+  //   )
+  // };
+
+  static navigationOptions = ({ navigation }) => {
+    return {
+      headerTitle: <Text> Météo</Text>,
+      headerRight: (
+        <Button
+          onPress={navigation.getParam("handleLogout")}
+          title="Deconnexion"
+          type="clear"
+        />
+      )
+    };
   };
 
   state = {
@@ -41,6 +59,8 @@ export default class Main extends React.Component {
 
   componentDidMount() {
     const { currentUser } = firebase.auth();
+
+    this.props.navigation.setParams({ handleLogout: this._handleLogout });
 
     this.setState({ currentUser });
 
@@ -92,7 +112,11 @@ export default class Main extends React.Component {
       });
   }
 
-  handleLogOut() {
+  _handleLogout = () => {
+    this.handleLogout();
+  };
+
+  handleLogout() {
     firebase
       .auth()
       .signOut()
@@ -159,14 +183,14 @@ export default class Main extends React.Component {
             max={this.state.max}
           />
           <View style={styles.buttonView}>
-            <Button title="Actualiser" onPress={this.handleReload.bind(this)} />
             <Button
-              title="Se deconnecter"
-              onPress={this.handleLogOut.bind(this)}
+              title="Actualiser"
+              onPress={this.handleReload.bind(this)}
+              onLongPress={this.handleLogout.bind(this)}
             />
           </View>
           <Text style={{ color: "#fff" }}>
-            Connécter en tant que: {currentUser.email}
+            Connecter en tant que: {currentUser.email}
           </Text>
         </View>
       </ImageBackground>

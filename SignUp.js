@@ -1,11 +1,11 @@
 // SignUp.js
 import React from "react";
+import { Button } from "react-native-elements";
 import {
   StyleSheet,
   Text,
   TextInput,
   View,
-  Button,
   ImageBackground
 } from "react-native";
 import firebase from "react-native-firebase";
@@ -36,9 +36,15 @@ export default class SignUp extends React.Component {
             <Button
               style={styles.button}
               title="Connexion"
+              type="clear"
               onPress={() => this.props.navigation.navigate("Login")}
             />
-            <Button style={styles.button} disabled title="Inscription" />
+            <Button
+              style={styles.button}
+              disabled
+              title="Inscription"
+              type="clear"
+            />
           </View>
 
           {this.state.errorMessage && (
