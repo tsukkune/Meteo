@@ -9,6 +9,7 @@ const Fleche = props => (
     y={0}
     viewBox="0 0 58 75.7"
     xmlSpace="preserve"
+    fill="#5E9E9C"
     {...props}
   >
     <Path

@@ -10,6 +10,7 @@ const poubelle = props => (
     y={0}
     viewBox="0 0 212.5 212.7"
     xmlSpace="preserve"
+    fill="#6A0A3E"
     {...props}
   >
     <Path

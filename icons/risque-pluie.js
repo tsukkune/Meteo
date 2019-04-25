@@ -9,6 +9,7 @@ const risque_pluie = props => (
     y={0}
     viewBox="0 0 212.5 212.7"
     xmlSpace="preserve"
+    fill="#5E9E9C"
     {...props}
   >
     <Path
