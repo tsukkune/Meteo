@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import firebase from "react-native-firebase";
 import DetailsCard from "./Components/DetailsCard";
+import WeatherCard from "./Components/WeatherCard";
 
 export default class Main extends React.Component {
   state = {
@@ -20,6 +21,7 @@ export default class Main extends React.Component {
     city: null,
     date: null,
     condition: null,
+    code: null,
     temp: null,
     min: null,
     max: null,
@@ -88,6 +90,7 @@ export default class Main extends React.Component {
           city: data.location.name,
           date: data.location.localtime,
           condition: data.current.condition.text,
+          code: data.current.condition.code,
           temp: data.current.temp_c,
           min: data.forecast.forecastday[0].day.mintemp_c,
           max: data.forecast.forecastday[0].day.maxtemp_c,
@@ -149,16 +152,12 @@ export default class Main extends React.Component {
             <Text style={{ color: "red" }}>{this.state.errorMessage}</Text>
           )}
 
-          <Text>Connécter en tant que: {currentUser.email}</Text>
-          <Button
-            title="Se deconnecter"
-            onPress={this.handleLogOut.bind(this)}
+          <WeatherCard
+            date={this.state.date}
+            condition={this.state.condition}
+            code={this.state.code}
+            city={this.state.city}
           />
-          <Text> ville: {this.state.city}</Text>
-          <Text>Latitude: {this.state.latitude}</Text>
-          <Text>Longitude: {this.state.longitude}</Text>
-          <Text>date: {this.state.date}</Text>
-          <Text>condition: {this.state.condition}</Text>
 
           <DetailsCard
             uv={this.state.uv}
@@ -170,8 +169,16 @@ export default class Main extends React.Component {
             min={this.state.min}
             max={this.state.max}
           />
-
-          <Button title="Actualiser" onPress={this.handleReload.bind(this)} />
+          <View style={styles.buttonView}>
+            <Button title="Actualiser" onPress={this.handleReload.bind(this)} />
+            <Button
+              title="Se deconnecter"
+              onPress={this.handleLogOut.bind(this)}
+            />
+          </View>
+          <Text style={{ color: "#fff" }}>
+            Connécter en tant que: {currentUser.email}
+          </Text>
         </View>
       </ImageBackground>
     );
@@ -180,13 +187,16 @@ export default class Main extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: "space-between"
   },
   indicator: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     height: 80
+  },
+  buttonView: {
+    width: "90%",
+    alignItems: "center"
   }
 });

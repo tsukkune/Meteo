@@ -4,7 +4,7 @@ import Humidite from "../icons/humidite";
 import Ressenti from "../icons/ressenti";
 import Vent from "../icons/vent";
 import Visibilite from "../icons/visibilite";
-import Soleil from "../icons/soleil";
+import Uv from "../icons/uv";
 import Up from "../icons/up";
 import Down from "../icons/down";
 
@@ -39,7 +39,7 @@ const DetailsCard = props => (
           <Text style={styles.text}> visibilite: {props.visibility} Km</Text>
         </View>
         <View style={{ flexDirection: "row" }}>
-          <Soleil height={18} width={18} />
+          <Uv height={18} width={18} />
           <Text style={styles.text}> uv: {props.uv}</Text>
         </View>
       </View>
