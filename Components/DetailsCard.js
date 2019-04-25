@@ -1,22 +1,47 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import Humidite from "../icons/humidite";
-import Fleche from "../icons/fleche";
+import Ressenti from "../icons/ressenti";
+import Vent from "../icons/vent";
+import Visibilite from "../icons/visibilite";
+import Soleil from "../icons/soleil";
+import Up from "../icons/up";
+import Down from "../icons/down";
 
 const DetailsCard = props => (
-  <View style={{ backgroundColor: "#BAE8E5" }}>
-    <Text style={styles.title}>DÉTAILS</Text>
+  <View /*style={{ backgroundColor: "#BAE8E5" }}*/>
     <View style={styles.global}>
-      <Text style={styles.temperature}>{props.temp}°</Text>
+      <View style={{ justifyContent: "center", alignItems: "center" }}>
+        <View style={{ flexDirection: "row" }}>
+          <Down height={18} width={18} />
+          <Text style={styles.text}> {props.min}°</Text>
+          <Up height={18} width={18} />
+          <Text style={styles.text}> {props.max}°</Text>
+        </View>
+        <Text style={styles.temperature}>{props.temp}°</Text>
+      </View>
       <View>
-        <Text>ressenti: {props.feeltemp}°</Text>
+        <Text style={styles.title}>DÉTAILS</Text>
+        <View style={{ flexDirection: "row" }}>
+          <Ressenti height={18} width={18} />
+          <Text style={styles.text}> ressenti: {props.feeltemp}°</Text>
+        </View>
         <View style={{ flexDirection: "row" }}>
           <Humidite height={18} width={18} />
-          <Text>humidite: {props.humidity} %</Text>
+          <Text style={styles.text}> humidite: {props.humidity} %</Text>
         </View>
-        <Text>vent: {props.wind} Km/h</Text>
-        <Text>visibilite: {props.visibility} Km</Text>
-        <Text>uv: {props.uv}</Text>
+        <View style={{ flexDirection: "row" }}>
+          <Vent height={18} width={18} />
+          <Text style={styles.text}> vent: {props.wind} Km/h</Text>
+        </View>
+        <View style={{ flexDirection: "row" }}>
+          <Visibilite height={18} width={18} />
+          <Text style={styles.text}> visibilite: {props.visibility} Km</Text>
+        </View>
+        <View style={{ flexDirection: "row" }}>
+          <Soleil height={18} width={18} />
+          <Text style={styles.text}> uv: {props.uv}</Text>
+        </View>
       </View>
     </View>
   </View>
@@ -24,12 +49,16 @@ const DetailsCard = props => (
 
 const styles = StyleSheet.create({
   title: {
-    justifyContent: "flex-end",
+    color: "white",
     fontSize: 20,
     fontWeight: "bold",
-    color: "#000"
+    textDecorationLine: "underline"
+  },
+  text: {
+    color: "white"
   },
   temperature: {
+    color: "white",
     fontSize: 42
   },
   global: {

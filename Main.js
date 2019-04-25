@@ -21,6 +21,8 @@ export default class Main extends React.Component {
     date: null,
     condition: null,
     temp: null,
+    min: null,
+    max: null,
     feeltemp: null,
     humidity: null,
     wind: null,
@@ -82,12 +84,13 @@ export default class Main extends React.Component {
         return result.json();
       })
       .then(data => {
-        console.log(typeof data.location.localtime);
         this.setState({
           city: data.location.name,
           date: data.location.localtime,
           condition: data.current.condition.text,
           temp: data.current.temp_c,
+          min: data.forecast.forecastday[0].day.mintemp_c,
+          max: data.forecast.forecastday[0].day.maxtemp_c,
           feeltemp: data.current.feelslike_c,
           humidity: data.current.humidity,
           wind: data.current.wind_kph,
@@ -164,6 +167,8 @@ export default class Main extends React.Component {
             humidity={this.state.humidity}
             feeltemp={this.state.feeltemp}
             temp={this.state.temp}
+            min={this.state.min}
+            max={this.state.max}
           />
 
           <Button title="Actualiser" onPress={this.handleReload.bind(this)} />
