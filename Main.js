@@ -196,7 +196,9 @@ const styles = StyleSheet.create({
     height: 80
   },
   buttonView: {
+    flex: 1,
     width: "90%",
-    alignItems: "center"
+    alignItems: "center",
+    justifyContent: "space-around"
   }
 });

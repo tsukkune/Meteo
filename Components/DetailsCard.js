@@ -9,39 +9,37 @@ import Up from "../icons/up";
 import Down from "../icons/down";
 
 const DetailsCard = props => (
-  <View /*style={{ backgroundColor: "#BAE8E5" }}*/>
-    <View style={styles.global}>
-      <View style={{ justifyContent: "center", alignItems: "center" }}>
-        <View style={{ flexDirection: "row" }}>
-          <Down height={18} width={18} />
-          <Text style={styles.text}> {props.min}°</Text>
-          <Up height={18} width={18} />
-          <Text style={styles.text}> {props.max}°</Text>
-        </View>
-        <Text style={styles.temperature}>{props.temp}°</Text>
+  <View style={styles.global}>
+    <View style={{ justifyContent: "center", alignItems: "center" }}>
+      <View style={{ flexDirection: "row" }}>
+        <Down height={18} width={18} />
+        <Text style={styles.text}> {props.min}°</Text>
+        <Up height={18} width={18} />
+        <Text style={styles.text}> {props.max}°</Text>
       </View>
-      <View>
-        <Text style={styles.title}>DÉTAILS</Text>
-        <View style={{ flexDirection: "row" }}>
-          <Ressenti height={18} width={18} />
-          <Text style={styles.text}> ressenti: {props.feeltemp}°</Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Humidite height={18} width={18} />
-          <Text style={styles.text}> humidite: {props.humidity} %</Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Vent height={18} width={18} />
-          <Text style={styles.text}> vent: {props.wind} Km/h</Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Visibilite height={18} width={18} />
-          <Text style={styles.text}> visibilite: {props.visibility} Km</Text>
-        </View>
-        <View style={{ flexDirection: "row" }}>
-          <Uv height={18} width={18} />
-          <Text style={styles.text}> uv: {props.uv}</Text>
-        </View>
+      <Text style={styles.temperature}>{props.temp}°</Text>
+    </View>
+    <View style={{ justifyContent: "center" }}>
+      <Text style={styles.title}>DÉTAILS</Text>
+      <View style={styles.detailsRow}>
+        <Ressenti height={18} width={18} />
+        <Text style={styles.text}> ressenti: {props.feeltemp}°</Text>
+      </View>
+      <View style={styles.detailsRow}>
+        <Humidite height={18} width={18} />
+        <Text style={styles.text}> humidite: {props.humidity} %</Text>
+      </View>
+      <View style={styles.detailsRow}>
+        <Vent height={18} width={18} />
+        <Text style={styles.text}> vent: {props.wind} Km/h</Text>
+      </View>
+      <View style={styles.detailsRow}>
+        <Visibilite height={18} width={18} />
+        <Text style={styles.text}> visibilite: {props.visibility} Km</Text>
+      </View>
+      <View style={styles.detailsRow}>
+        <Uv height={18} width={18} />
+        <Text style={styles.text}> uv: {props.uv}</Text>
       </View>
     </View>
   </View>
@@ -49,23 +47,26 @@ const DetailsCard = props => (
 
 const styles = StyleSheet.create({
   title: {
-    color: "white",
+    color: "#BAE8E5",
     fontSize: 20,
     fontWeight: "bold",
-    textDecorationLine: "underline"
+    textDecorationLine: "underline",
+    paddingBottom: 24
   },
   text: {
-    color: "BAE8E5"
+    color: "#BAE8E5"
   },
   temperature: {
-    color: "BAE8E5",
+    color: "#BAE8E5",
     fontSize: 42
   },
   global: {
+    flex: 2,
     flexDirection: "row",
     width: "90%",
     justifyContent: "space-evenly"
-  }
+  },
+  detailsRow: { flexDirection: "row", paddingBottom: 16 }
 });
 
 export default DetailsCard;
