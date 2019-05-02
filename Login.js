@@ -14,11 +14,16 @@ export default class Login extends React.Component {
   state = { email: "", password: "", errorMessage: null };
   handleLogin = () => {
     const { email, password } = this.state;
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(email.trim(), password)
-      .then(() => this.props.navigation.navigate("Main"))
-      .catch(error => this.setState({ errorMessage: error.message }));
+    if (email.trim() != "" && password.trim() != "") {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email.trim(), password)
+        .then(() => this.props.navigation.navigate("Main"))
+        .catch(error => this.setState({ errorMessage: error.message }));
+    } else {
+      this.setState({ errorMessage: "Veuillez remplis tout les champs" });
+    }
+
     console.log("handleLogin");
   };
   render() {
